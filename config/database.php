@@ -14,13 +14,13 @@
          */
 
         'connections' => [
-            'sam' => [
+            'mysql' => [
                 'driver' => 'mysql',
                 'host' => 'localhost',
                 'port' => 3306,
-                'database' => 'SAM',
-                'username' => 'root',
-                'password' => 'test',
+                'database' => 'YOUR_DATABASE',
+                'username' => 'YOUR_USERNAME',
+                'password' => 'YOUR_PASSWORD',
                 'charset' => 'utf8',
                 'collation' => 'utf8_unicode_ci',
                 'prefix' => '',

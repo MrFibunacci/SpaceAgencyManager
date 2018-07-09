@@ -21,6 +21,12 @@
         app("SAM@registerUser", $_POST);
     });
 
+    $klein->get("/login", function () {
+        app("SAM@login", $_POST);
+    });
+
+
+
     $klein->get("/dashboard", function() {
         view("dashboard");
     });
@@ -45,9 +51,9 @@
         view("transport");
     });
 
-/*$klein->with("/[:agency]", function () use ($klein) {
+/*$klein->with("/[:agency]", function ($request) use ($klein) {
     $klein->get("/dashboard", function() {
-        view("dashboard");
+        view("dashboard" );
     });
 });*/
 

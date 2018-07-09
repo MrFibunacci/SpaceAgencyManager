@@ -8,4 +8,9 @@
             //TODO: add logic to register user
             //dd($userData);
         }
+
+        public function login(array $loginData)
+        {
+
+        }
     }

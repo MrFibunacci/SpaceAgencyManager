@@ -1,47 +1,19 @@
 {
-  "_from": "framy",
-  "_id": "framy@0.2.3",
-  "_inBundle": false,
-  "_integrity": "sha512-EjvO1i9JoANQDkpsz9GDcZBiFbYnhoQPZATbvkg4mkQOb+l/8mMguCuwlkyQQ5kA+CyOo6C7Zat3P6XRFOQRgg==",
-  "_location": "/framy",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "framy",
-    "name": "framy",
-    "escapedName": "framy",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/framy/-/framy-0.2.3.tgz",
-  "_shasum": "f91310dc5c81e4ffbcd41e169e4cf19483c0f2b3",
-  "_spec": "framy",
-  "_where": "/var/www/SpaceAgencyManager",
-  "author": {
-    "name": "mrfibunacci"
-  },
-  "bugs": {
-    "url": "https://github.com/FramyFramework/Framy/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
-  "description": "Just a try to make an own PHP framework. Which is quite meh.",
-  "homepage": "https://github.com/FramyFramework",
-  "license": "MIT",
-  "main": "index.js",
   "name": "framy",
+  "version": "0.3",
+  "description": "Just a try to make an own PHP framework. Which is quite meh.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FramyFramework/Framy.git"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "mrfibunacci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FramyFramework/Framy/issues"
   },
-  "version": "0.2.3"
+  "homepage": "https://github.com/FramyFramework"
 }

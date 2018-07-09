@@ -18,7 +18,7 @@
                 $table->increments();
                 $table->string('name');
                 $table->string('shortage', 5);
-                $table->int('creatorId');
+                $table->integer('creatorId');
                 $table->timestamps();
             }, "sam");
         }

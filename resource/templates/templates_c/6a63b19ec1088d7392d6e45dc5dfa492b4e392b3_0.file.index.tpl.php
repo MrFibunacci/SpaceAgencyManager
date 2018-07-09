@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-07-09 14:56:40
+/* Smarty version 3.1.30, created on 2018-07-09 17:00:01
   from "/var/www/SpaceAgencyManager/resource/templates/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b435b8835fcf1_24973600',
+  'unifunc' => 'content_5b4378710cbaa6_85549467',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6a63b19ec1088d7392d6e45dc5dfa492b4e392b3' => 
     array (
       0 => '/var/www/SpaceAgencyManager/resource/templates/index.tpl',
-      1 => 1531141044,
+      1 => 1531141189,
       2 => 'file',
     ),
   ),
@@ -21,28 +21,28 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:main.tpl' => 1,
   ),
 ),false)) {
-function content_5b435b8835fcf1_24973600 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b4378710cbaa6_85549467 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14926628695b435b88359ba9_23640549', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18561295595b4378710ca564_68658488', 'title');
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13818419965b435b8835c4e3_33065293', 'page_content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12034254615b4378710caf61_68855369', 'page_content');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8903225885b435b8835ea12_65369143', 'extra_scripts');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_950684775b4378710cb765_19958750', 'extra_scripts');
 $_smarty_tpl->inheritance->endChild();
 $_smarty_tpl->_subTemplateRender("file:main.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 2, false);
 }
 /* {block 'title'} */
-class Block_14926628695b435b88359ba9_23640549 extends Smarty_Internal_Block
+class Block_18561295595b4378710ca564_68658488 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -51,7 +51,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'title'} */
 /* {block 'page_content'} */
-class Block_13818419965b435b8835c4e3_33065293 extends Smarty_Internal_Block
+class Block_12034254615b4378710caf61_68855369 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -96,7 +96,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                     Create an Agency
                 </div>
                 <div class="card-body">
-                    <form action="/newAgency">
+                    <form action="/newAgency" method="post">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name">
@@ -116,7 +116,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'page_content'} */
 /* {block 'extra_scripts'} */
-class Block_8903225885b435b8835ea12_65369143 extends Smarty_Internal_Block
+class Block_950684775b4378710cb765_19958750 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
