@@ -13,16 +13,29 @@
 
         <div class="content-wrapper">
             <!-- main content-->
-            <div class="container-fluid">
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h1>{block name="page_header"}{/block}</h1>
+                    </div>
+                </div>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">MyAgency</a>
+                        <a href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item active">sub level</li>
+                    {foreach $breadcrumbPath as $key => $breadcrumb}
+                        {if $breadcrumbPath[$key+1]}
+                        <li class="breadcrumb-item">
+                            <a href="{$breadcrumb['path']}">{$breadcrumb['text']}</a>
+                        </li>
+                        {else}
+                        <li class="breadcrumb-item active">{$breadcrumb['text']}</li>
+                        {/if}
+                    {/foreach}
                 </ol>
 
                 {block name='page_content'}{/block}
-            </div>
+            </section>
             <!-- /. main content-->
             <footer class="sticky-footer">
                 <div class="container">
