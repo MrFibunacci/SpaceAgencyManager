@@ -1,32 +1,45 @@
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Finances">
-        <a class="nav-link" href="/finances">
+        <a class="nav-link" href="/{$agencyID}/finances">
             <i class="fa fa-fw "></i>
             <span class="nav-link-text">Finances</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Missions">
-        <a class="nav-link" href="/missions">
+        <a class="nav-link" href="/{$agencyID}/missions">
             <i class="fa fa-fw"></i>
             <span class="nav-link-text">Missions</span>
         </a>
     </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseHardware" data-parent="#exampleAccordion">
+            <span class="nav-link-text">Hardware</span>
+        </a>
+        <ul class="sidenav-second-level collapse" id="collapseHardware">
+            <li>
+                <a href="/{$agencyID}/newsat">Build new Satellite</a>
+            </li>
+            <li>
+                <a href="/{$agencyID}/newlsl">Build new Space launch system</a>
+            </li>
+        </ul>
+    </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contracts">
-        <a class="nav-link" href="/contracts">
+        <a class="nav-link" href="/{$agencyID}/contracts">
             <i class="fa fa-fw"></i>
             <span class="nav-link-text">Contracts</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Locations">
-        <a class="nav-link" href="/locations">
+        <a class="nav-link" href="/{$agencyID}/locations">
             <i class="fa fa-fw"></i>
             <span class="nav-link-text">Locations</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transport">
-        <a class="nav-link" href="/transport">
+        <a class="nav-link" href="/{$agencyID}/logistic">
             <i class="fa fa-fw"></i>
-            <span class="nav-link-text">Transport</span>
+            <span class="nav-link-text">Logistic</span>
         </a>
     </li>
     {*<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
@@ -61,10 +74,3 @@
         </ul>
     </li>*}
 </ul>
-{*<ul class="navbar-nav sidenav-toggler">
-    <li class="nav-item">
-        <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-        </a>
-    </li>
-</ul>*}

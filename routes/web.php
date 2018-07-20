@@ -14,48 +14,55 @@
     $klein = new Klein();
 
     $klein->get("/", function(){
-        view("index");
+        \app\custom\Http\Controller\SAM::index();
     });
 
     $klein->get("/register", function () {
         app("SAM@registerUser", $_POST);
     });
 
-    $klein->get("/login", function () {
-        app("SAM@login", $_POST);
+    $klein->get("/login", function() {
+        \app\custom\Http\Controller\SAM::login();
     });
 
-
-
-    $klein->get("/dashboard", function() {
-        view("dashboard");
+    $klein->get("/logout", function() {
+        \app\custom\Http\Controller\SAM::logout();
     });
 
-    $klein->get("/finances", function() {
-        view("finances");
-    });
+    $klein->with("/[i:agency]", function ($request) use ($klein) {
 
-    $klein->get("/missions", function() {
-        view("missions");
-    });
+        /*$klein->get("/dashboard", function($request) {
+            view("dashboard");
+        });*/
 
-    $klein->get("/contracts", function() {
-        view("contracts");
-    });
+        $klein->get("/finances", function($request) {
+            \app\custom\Http\Controller\Finances::get($request->agency);
+        });
 
-    $klein->get("/locations", function() {
-        view("locations");
-    });
+        $klein->get("/missions", function($request) {
+            view("missions");
+        });
 
-    $klein->get("/transport", function() {
-        view("transport");
-    });
+        $klein->get("/mission", function($request) {
+            view("mission");
+        });
 
-/*$klein->with("/[:agency]", function ($request) use ($klein) {
-    $klein->get("/dashboard", function() {
-        view("dashboard" );
+        $klein->get("/contracts", function($request) {
+            view("contracts");
+        });
+
+        $klein->get("/locations", function($request) {
+            view("locations");
+        });
+
+        $klein->get("/logistic", function($request) {
+            view("logistic");
+        });
+
+        $klein->get("/newsat", function($request) {
+            view("newsat");
+        });
     });
-});*/
 
     // add more routes here ...
 

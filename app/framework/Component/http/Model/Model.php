@@ -56,9 +56,13 @@
 
         function __construct()
         {
-            if($this->is($this->connection)){
-                // setup connection
-                $this->DB = new Database($this->connection);
+            try {
+                if($this->is($this->connection)){
+                    // setup connection
+                    $this->DB = new Database($this->connection);
+                }
+            } catch (\Exception $e) {
+                handle($e);
             }
         }
 

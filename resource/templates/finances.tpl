@@ -1,6 +1,9 @@
 {extends file='main.tpl'}
 
 {block name='title'} - Finances{/block}
+
+{$notEnoughDataHTML = '<p class="text-center text-muted">Not enough data</p>'}
+
 {block name='page_content'}
     <div class="row">
         <div class="col-12">
@@ -19,9 +22,13 @@
                     Finances
                 </div>
                 <div class="card-body">
-                    <div class="row">
+
+                    {if notEnoughData}
+                        {$notEnoughDataHTML}
+                    {else}
                         <canvas id="financialDevGraph" height="75%"></canvas>
-                    </div>
+                    {/if}
+
                 </div>
             </div>
         </div>
@@ -44,16 +51,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">Accepted Contract</td>
-                                            <td>11.28.2008</td>
-                                            <td class="text-right">162,700.00$</td>
-                                        </tr>
-                                        <tr role="row" class="even">
-                                            <td class="sorting_1">Build new Building</td>
-                                            <td>10.09.2009</td>
-                                            <td class="text-right">1,200,000.00$</td>
-                                        </tr>
+                                        {foreach $transactions as $transaction}
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{$transaction['usage']}</td>
+                                                <td>{$transaction['dateTime']}</td>
+                                                <td class="text-right">{$transaction['amount']}</td>
+                                            </tr>
+                                        {/foreach}
                                         </tbody>
                                     </table>
                                 </div>
@@ -71,7 +75,11 @@
                     Income
                 </div>
                 <div class="card-body">
-                    <canvas id="incomeDevGraph" height="75%"></canvas>
+                    {if notEnoughData}
+                        {$notEnoughDataHTML}
+                    {else}
+                        <canvas id="incomeDevGraph" height="75%"></canvas>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -81,7 +89,11 @@
                     Structure
                 </div>
                 <div class="card-body">
-                    <canvas id="incomeDoughnutGraph" ></canvas>
+                    {if notEnoughData}
+                        {$notEnoughDataHTML}
+                    {else}
+                        <canvas id="incomeDoughnutGraph" ></canvas>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -93,7 +105,11 @@
                     Outcome
                 </div>
                 <div class="card-body">
-                    <canvas id="outcomeDevGraph" height="75%"></canvas>
+                    {if notEnoughData}
+                        {$notEnoughDataHTML}
+                    {else}
+                        <canvas id="outcomeDevGraph" height="75%"></canvas>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -103,7 +119,11 @@
                     Structure
                 </div>
                 <div class="card-body">
-                    <canvas id="outcomeDoughnutGraph" ></canvas>
+                    {if notEnoughData}
+                        {$notEnoughDataHTML}
+                    {else}
+                        <canvas id="outcomeDoughnutGraph" ></canvas>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -111,12 +131,12 @@
 {/block}
 
 {block name='extra_scripts'}
-    <script src="js/chartPreload.js"></script>
+    <script src="/js/chartPreload.js"></script>
     <script>
         const exampleLineChartObj = {
             type: 'line',
             data: {
-                labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+                labels: {$labels},
                 datasets: [{
                     label: "Sessions",
                     lineTension: 0.3,
@@ -135,23 +155,92 @@
             options: lineChartOptions
         };
 
-        const exampleDoughnutChartObj = {
-            type: 'doughnut',
+        let financialDevGraph = new Chart(document.getElementById("financialDevGraph"), {
+            type: 'line',
             data: {
-                labels: ["Development", "Employees", "Budget", "Green"],
+                labels: {$labels},
                 datasets: [{
-                    data: [12.21, 15.58, 11.25, 8.32],
-                    backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+                    label: "Absolute Change",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(2,117,216,0.2)",
+                    borderColor: "rgba(2,117,216,1)",
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(2,117,216,1)",
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                    pointHitRadius: 20,
+                    pointBorderWidth: 2,
+                    data: {$financialDevGraphData},
                 }],
             },
-        };
+            options: lineChartOptions
+        });
 
-        let financialDevGraph = new Chart(document.getElementById("financialDevGraph"), exampleLineChartObj);
+        let incomeDevGraph = new Chart(document.getElementById('incomeDevGraph'), {
+            type: 'line',
+            data: {
+                labels: {$labels},
+                datasets: [{
+                    label: "Income",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(2,117,216,0.2)",
+                    borderColor: "rgba(2,117,216,1)",
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(2,117,216,1)",
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                    pointHitRadius: 20,
+                    pointBorderWidth: 2,
+                    data: {$incomeDevGraphData},
+                }],
+            },
+            options: lineChartOptions
+        });
 
-        let incomeDevGraph = new Chart(document.getElementById('incomeDevGraph'), exampleLineChartObj);
-        let outcomeDevGraph = new Chart(document.getElementById('outcomeDevGraph'), exampleLineChartObj);
+        let outcomeDevGraph = new Chart(document.getElementById('outcomeDevGraph'), {
+            type: 'line',
+            data: {
+                labels: {$labels},
+                datasets: [{
+                    label: "Sessions",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(2,117,216,0.2)",
+                    borderColor: "rgba(2,117,216,1)",
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(2,117,216,1)",
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                    pointHitRadius: 20,
+                    pointBorderWidth: 2,
+                    data: {$outcomeDevGraphData},
+                }],
+            },
+            options: lineChartOptions
+        });
 
-        let incomeDoughnutGraph = new Chart(document.getElementById('incomeDoughnutGraph'), exampleDoughnutChartObj);
-        let outcomeDoughnutGraph = new Chart(document.getElementById('outcomeDoughnutGraph'), exampleDoughnutChartObj);
+        let incomeDoughnutGraph = new Chart(document.getElementById('incomeDoughnutGraph'), {
+            type: 'doughnut',
+            data: {
+                labels: {$doughnutLabels},
+                datasets: [{
+                    data: [12.21, 15.58, 11.25, 8.32],
+                    backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#0700a7'],
+                }],
+            },
+        });
+
+        let outcomeDoughnutGraph = new Chart(document.getElementById('outcomeDoughnutGraph'), {
+            type: 'doughnut',
+            data: {
+                labels: {$doughnutLabels},
+                datasets: [{
+                    data: [12.21, 15.58, 11.25, 8.32],
+                    backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#0700a7'],
+                }],
+            },
+        });
     </script>
 {/block}

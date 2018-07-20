@@ -78,10 +78,17 @@
     </li>*}
     <li class="nav-item">
         {* Put the logic for accounts and login here*}
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="/login">
-            <i class="fa fa-fw fa-sign-in"></i>
-            Login
-        </a>
+        {if $smarty.session.is_loggedIn == true}
+            <a class="nav-link" data-toggle="modal" data-target="#userAccModal">
+                <i class="fa fa-fw fa-user"></i>
+                {$smarty.session.name}
+            </a>
+        {else}
+            <a class="nav-link" data-toggle="modal" data-target="#loginModal">
+                <i class="fa fa-fw fa-sign-in"></i>
+                Login
+            </a>
+        {/if}
     </li>
 
     <li class="nav-item">
